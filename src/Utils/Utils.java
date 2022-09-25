@@ -1,6 +1,12 @@
+package Utils;
+
 import java.util.Scanner;
 
 public class Utils {
+    public static String getTerminalValue(String text) {
+        System.out.print(text);
+        return new Scanner(System.in).nextLine();
+    }
     public static int optionMenu() {
         System.out.println("""
                     Menú principal
