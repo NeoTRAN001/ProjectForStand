@@ -11,6 +11,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AutomovilService {
     private static List<Automovil> automovilList = new ArrayList<>();
 
+    public boolean validatePlacaContains(String placa) {
+        return automovilList.stream().anyMatch(o -> placa.equals(o.getPlaca()));
+    }
+
     public void handlerMenuInsertAutomovil() {
         Automovil automovil = new Automovil(
                 Utils.getTerminalValue("Inserte la marca: "),
@@ -27,10 +31,7 @@ public class AutomovilService {
 
     public void handlerMenuShowAutomovil() {
         automovilList.forEach(automovil -> {
-            System.out.println("Marca: " + automovil.getMarca());
-            System.out.println("Linea: " + automovil.getLinea());
-            System.out.println("Placa: " + automovil.getPlaca());
-            System.out.println("Estado: " + automovil.getEstado() + "\n");
+            System.out.println(automovil.toString());
         });
 
         Utils.getTerminalValue("\nEnter para continuar...");
